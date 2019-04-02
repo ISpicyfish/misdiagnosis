@@ -13,14 +13,14 @@ import utils.FileUtil;
  * @version 创建时间：2017年8月15日下午8:19:06
  */
 public class ContFindDisAnalysis {
-	
+
 	public Disease disease; //被误诊疾病
-	
+
 	private String content;
 	public static final int MAX_LENGTH = 12;//最大的切词长度
 	public FoundState foundState;//记录解析结果
-	
-	
+
+
 	public ContFindDisAnalysis(String content){
 		this.foundState = FoundState.NOT_FOUND;
 		this.content = content;
@@ -31,7 +31,7 @@ public class ContFindDisAnalysis {
 	 * @param content
 	 */
 	public void contentAnalysisDis(){
-		
+
 		//由关键词寻找 疾病
 		if(keyWordFindDisease("确诊为"));
 		else if(keyWordFindDisease("死亡原因为"));
@@ -49,12 +49,12 @@ public class ContFindDisAnalysis {
 		else if(keyWordFindDisease("病理诊断"));
 		else if(keyWordFindDisease("病理诊断："));
 		else ;
-		
-		
+
+
 	}
-	
+
 	public boolean keyWordFindDisease(String keyWord){
-		
+
 		if(this.content.indexOf(keyWord)>-1){
 			int index = this.content.indexOf(keyWord)+keyWord.length();
 			System.out.println(index);
@@ -65,10 +65,10 @@ public class ContFindDisAnalysis {
 					//System.out.println(diseaseTemp);
 					this.disease = new Disease();
 					disease = DiseaseDao.selectSimpleDisease(diseaseTemp);
-					
+
 					System.out.println("被误诊疾病："+this.disease);
 					FileUtil.writeLog("被误诊疾病："+this.disease);
-					
+
 					this.foundState = FoundState.HAVE_FOUND;
 					return true;
 				}
@@ -76,6 +76,6 @@ public class ContFindDisAnalysis {
 		}
 		return false;
 	}
-	
-	
+
+
 }

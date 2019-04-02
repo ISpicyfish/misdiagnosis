@@ -1,15 +1,17 @@
 package entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * –’ œ
+ *
+ * @author ¡ı’‰’‰
+ */
+@Setter
+@Getter
 public class Surname {
 
-	private String surname;
+    private String surname;
 
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-	
 }

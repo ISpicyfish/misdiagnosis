@@ -9,23 +9,25 @@ import utils.Pdf2TxtUtil;
 
 public class Diary {
 
-	private String inFilePath;
-	private String outFilePath;
-	public Diary(String inFilePath,String outFilePath){
-		this.inFilePath = inFilePath;
-		this.outFilePath = outFilePath;
-		
-	}
-	public void Anani(){
-		List<String> list = new ArrayList<String>();
-		list = FileUtil.getAllFileName(inFilePath);
-		
-		//分析的时候
-		MainAnalysis analysis;
-		
-		for (String fileName : list) {
-			analysis = new MainAnalysis(inFilePath, outFilePath);
-			analysis.analysisOp(fileName);
-		}
-	}
+    private String inFilePath;
+    private String outFilePath;
+
+    public Diary(String inFilePath, String outFilePath) {
+        this.inFilePath = inFilePath;
+        this.outFilePath = outFilePath;
+
+    }
+
+    public void Anani() {
+        List<String> list = new ArrayList<String>();
+        list = FileUtil.getAllFileName(inFilePath);
+
+        //分析的时候
+        MainAnalysis analysis;
+
+        for (String fileName : list) {
+            analysis = new MainAnalysis(inFilePath, outFilePath);
+            analysis.analysisOp(fileName);
+        }
+    }
 }
